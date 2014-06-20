@@ -2,6 +2,10 @@
 <html>
   <head>
     <title>TRUISMS</title>
+
+    <!-- Scripts Here --> 
+    <script src="lib/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="js/truisms.js" type="text/javascript"></script>
   </head>
   <body>
     <header>
@@ -12,12 +16,8 @@
       <div id="help-text">
         Please submit a phone number or email address to subscribe:
       </div>
-<!--
-      <form id="signup-type">
-        <input type="radio" name="signup-type" value="Phone">Phone
-        <input type="radio" name="signup-type" value="Email">Email
-      </form>
--->
+
+      <div id="signup-type"></div>
       <form id="signup-phone">
         <input name="phone" type="text" placeholder="Phone Number" required />
         <select name="provider" required>
@@ -39,7 +39,7 @@
         </select>
         <input name="phone-submit" type="submit" value="Submit"/>
       </form>
-      or
+      <noscript><h2>or</h2></noscript>
       <form id="signup-email">
         <input name="email" type="text" placeholder="Email Address" required />
         <input name="email-submit" type="submit" value="Submit"/>
