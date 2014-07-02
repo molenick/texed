@@ -9,7 +9,6 @@
   $submit_type;
   $message = '';
   
-  print ($_GET['status']);
   // Detemine state of app:
   
   // Determine message
@@ -25,9 +24,21 @@
   // Determine submit-type.  Only accept one.
   if (isset($_GET['phone-submit'])) {
     $submit_type = 'phone';
+    //save_contact($_GET['phone'], $submit_type);
+    $phone = $_GET['phone'];
+    echo 'LENGTH: ' . strlen(trim($phone));
+    if (strlen(trim($phone)) < 10) {
+      header('Location: index.php?status=fail');
+    }
+    else {
+      $provider = $_GET['provider'];
+      $contact = $phone . '@' . $provider;
+      save_contact($contact, $submit_type);
+    }
   }
   elseif (isset($_GET['email-submit'])) {
     $submit_type = 'email';
+    save_contact($_GET['email'], $submit_type);
   }
 ?>
   
@@ -42,8 +53,8 @@
   </head>
   <body>
     <header>
-      <h1>Truisms</h1>
-      Jenny Holzer's Truisms delivered via SMS.
+      <h1><a href="index.php">Truisms</a></h1>
+      Jenny Holzer's Truisms delivered via SMS or Email.
     </header>
     <section id="body">
       <?php if (isset($message)) { echo $message; } ?>
@@ -53,6 +64,7 @@
 
       <div id="signup-type"></div>
       <form id="signup-phone">
+        Enter your phone number, including area code:<br />
         <input name="phone" type="text" placeholder="Phone Number" required />
         <select name="provider" required>
           <option value="message.alltel.com">Alltel</option>
@@ -75,9 +87,14 @@
       </form>
       <noscript><h2>or</h2></noscript>
       <form id="signup-email">
+        Enter your email address:<br />
         <input name="email" type="text" placeholder="Email Address" required />
         <input name="email-submit" type="submit" value="Submit"/>
       </form>
+    </section>
+    <section id="privacy-policy">
+      <h2>Privacy Policy</h2>
+      This site stores your supplied email and/or phone information to send you messages. This information is not shared with any third parties.
     </section>
   </body>
 </html>

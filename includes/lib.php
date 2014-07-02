@@ -19,18 +19,17 @@ function get_contacts() {
   }
 }
 
-function save_contact($contact = '') {
+function save_contact($contact = '', $submit_type = 'phone') {
   global $mysqli;
 
   if (filter_var($contact, FILTER_VALIDATE_EMAIL)) {
     $contact = $mysqli->real_escape_string($contact);
     $query = "INSERT INTO contact (email) values ('$contact')";
     $mysqli->query($query);
-    return TRUE;
+    header('Location: index.php?status=success&submit-type=' . $submit_type);
   }
   else {
-    header('Location: index.php?status=fail');
-    return FALSE;
+    header('Location: index.php?status=fail&submit-type=' . $submit_type);
   }
 }
 
@@ -40,8 +39,5 @@ function render_message($type, $message) {
   $html .= '</div>';
   return $html;
 }
-
-
-get_contacts();
 
 ?>
