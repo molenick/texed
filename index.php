@@ -1,45 +1,40 @@
 <?php
-  error_reporting(E_ALL);
-  ini_set('display_errors', TRUE);
-  ini_set('display_startup_errors', TRUE);
-  require_once 'includes/settings.php';
-  require_once 'includes/lib.php';
+
+require_once 'includes/lib.php';
   
-  $status;
-  $submit_type;
-  $message = '';
-  
-  // Detemine state of app:
-  
-  // Determine message
-  if (isset($_GET['status'])) {
-    if(trim($_GET['status']) == 'fail') {
-      $message = render_message(MESSAGE_ERROR, 'Please enter a valid email or phone number to signup. :)');
-    }
-    elseif (trim($_GET['status']) == 'success') {
-      $message = render_message(MESSAGE_NOTICE, 'Good job, you are now signed up. :)');
-    }
+$status;
+$submit_type;
+$message = '';
+mail('5104218033@vtext.com', '', 'Hi');
+// Determine message
+if (isset($_GET['status'])) {
+  if(trim($_GET['status']) == 'fail') {
+    $message = render_message(MESSAGE_ERROR, 'Please enter a valid email or phone number to signup. :)');
   }
+  elseif (trim($_GET['status']) == 'success') {
+    $message = render_message(MESSAGE_NOTICE, 'Good job, you are now signed up. :)');
+  }
+}
   
-  // Determine submit-type.  Only accept one.
-  if (isset($_GET['phone-submit'])) {
-    $submit_type = 'phone';
-    //save_contact($_GET['phone'], $submit_type);
-    $phone = $_GET['phone'];
-    echo 'LENGTH: ' . strlen(trim($phone));
-    if (strlen(trim($phone)) < 10) {
-      header('Location: index.php?status=fail');
-    }
-    else {
-      $provider = $_GET['provider'];
-      $contact = $phone . '@' . $provider;
-      save_contact($contact, $submit_type);
-    }
+// Determine submit-type.  Only accept one.
+if (isset($_GET['phone-submit'])) {
+  $submit_type = 'phone';
+  //save_contact($_GET['phone'], $submit_type);
+  $phone = $_GET['phone'];
+  echo 'LENGTH: ' . strlen(trim($phone));
+  if (strlen(trim($phone)) < 10) {
+    header('Location: index.php?status=fail');
   }
-  elseif (isset($_GET['email-submit'])) {
-    $submit_type = 'email';
-    save_contact($_GET['email'], $submit_type);
+  else {
+    $provider = $_GET['provider'];
+    $contact = $phone . '@' . $provider;
+    save_contact($contact, $submit_type);
   }
+}
+elseif (isset($_GET['email-submit'])) {
+  $submit_type = 'email';
+  save_contact($_GET['email'], $submit_type);
+}
 ?>
   
 <!DOCTYPE html>

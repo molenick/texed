@@ -1,5 +1,7 @@
 <?php
 
+require_once 'settings.php';
+
 define('MESSAGE_ERROR', 'error');
 define('MESSAGE_NOTICE', 'notice');
 
