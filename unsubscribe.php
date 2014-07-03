@@ -9,34 +9,25 @@ $message = '';
 // Determine message
 if (isset($_GET['status'])) {
   if(trim($_GET['status']) == 'fail') {
-    $message = render_message(MESSAGE_ERROR, 'Please enter a valid email or phone number to signup. :)');
-  }
-  elseif (trim($_GET['status']) == 'success') {
-    $message = render_message(MESSAGE_NOTICE, 'Good job, you are now signed up. :)');
-  }
-  elseif (trim($_GET['status']) == 'unsubscribe') {
-    $message = render_message(MESSAGE_NOTICE, 'You\'ve been removed from the truisms list. :)');
+    $message = render_message(MESSAGE_ERROR, 'Please enter a valid email or phone number to unsubscribe. :)');
   }
 }
   
 // Determine submit-type.  Only accept one.
 if (isset($_GET['phone-submit'])) {
-  $submit_type = 'phone';
-  //save_contact($_GET['phone'], $submit_type);
   $phone = $_GET['phone'];
-  echo 'LENGTH: ' . strlen(trim($phone));
   if (strlen(trim($phone)) < 10) {
-    header('Location: index.php?status=fail');
+    header('Location: unsubscribe.php?status=fail');
   }
   else {
     $provider = $_GET['provider'];
     $contact = $phone . '@' . $provider;
-    save_contact($contact, $submit_type);
+    remove_contact($contact, $submit_type);
   }
 }
 elseif (isset($_GET['email-submit'])) {
   $submit_type = 'email';
-  save_contact($_GET['email'], $submit_type);
+  remove_contact($_GET['email']);
 }
 ?>
   
@@ -51,17 +42,17 @@ elseif (isset($_GET['email-submit'])) {
   </head>
   <body>
     <header>
-      <h1><a href="index.php">Truisms</a></h1>
-      Jenny Holzer's Truisms delivered via SMS or Email.
+      <h1>Unsubscribe from <a href="index.php">Truisms</a></h1>
+      Unsubscribe page
     </header>
     <section id="body">
       <?php if (isset($message)) { echo $message; } ?>
       <div id="help-text">
-        Please submit a phone number or email address to subscribe:
+        Please submit a phone number or email address to unsubscribe:
       </div>
 
-      <div id="signup-type"></div>
-      <form id="signup-phone">
+      <div id="unsubscribe-type"></div>
+      <form id="unsubscribe-phone">
         Enter your phone number, including area code:<br />
         <input name="phone" type="text" placeholder="Phone Number" required />
         <select name="provider" required>
@@ -84,14 +75,11 @@ elseif (isset($_GET['email-submit'])) {
         <input name="phone-submit" type="submit" value="Submit"/>
       </form>
       <noscript><h2>or</h2></noscript>
-      <form id="signup-email">
+      <form id="unsubscribe-email">
         Enter your email address:<br />
         <input name="email" type="text" placeholder="Email Address" required />
         <input name="email-submit" type="submit" value="Submit"/>
       </form>
-    </section>
-    <section id="unsubscribe">
-      <a href="unsubscribe.php">Unsubscribe</a>
     </section>
     <section id="privacy-policy">
       <h2>Privacy Policy</h2>

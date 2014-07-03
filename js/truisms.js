@@ -8,10 +8,12 @@ function truismsRenderSignupTypeForm() {
 }
 
 $(document).ready(function() {
-  $('#signup-email').hide();
-  $('#signup-type').html(truismsRenderSignupTypeForm());
+  $('#signup-email, #unsubscribe-email').hide();
+  $('#signup-type, #unsubscribe-type').html(truismsRenderSignupTypeForm());
   $('#phone-type, #email-type').change(function() {
     $('#signup-phone').toggle();
     $('#signup-email').toggle();
+    $('#unsubscribe-phone').toggle();
+    $('#unsubscribe-email').toggle();
   });
 });

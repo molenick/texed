@@ -10,13 +10,16 @@ if ($mysqli->connect_errno) {
   echo "Can't connect to the database. :*(";
 }
 
-function get_contacts() {
+function mail_contacts($message) {
   global $mysqli;
   $contacts = array();
   $query = 'SELECT * FROM contact';
   $results = $mysqli->query($query);
   while ($row = $results->fetch_assoc()) {
     $contacts[] = $row['email'];
+    $send_message = $message . ' - unsubscribe @ weirdworld.info/truisms/unsubscribe.php';
+    mail($row['email'], 'today\'s truism', $send_message);
+    echo $row['email'] . "<br/>";
   }
 }
 
@@ -31,6 +34,15 @@ function save_contact($contact = '', $submit_type = 'phone') {
   else {
     header('Location: index.php?status=fail&submit-type=' . $submit_type);
   }
+}
+
+function remove_contact($contact) {
+  global $mysqli;
+  $contact = $mysqli->real_escape_string($contact);
+  $query = "DELETE FROM contact WHERE email = '$contact'";
+  $mysqli->query($query);
+  $affected = $mysqli->affected_rows;
+  header('Location: index.php?status=unsubscribe');
 }
 
 function get_prev_messages() {
