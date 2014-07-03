@@ -35,7 +35,8 @@ elseif (isset($_GET['email-submit'])) {
 <html>
   <head>
     <title>TRUISMS</title>
-
+    <!-- CSS Here -->
+    <link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" />
     <!-- Scripts Here --> 
     <script src="lib/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="js/truisms.js" type="text/javascript"></script>
@@ -43,7 +44,6 @@ elseif (isset($_GET['email-submit'])) {
   <body>
     <header>
       <h1>Unsubscribe from <a href="index.php">Truisms</a></h1>
-      Unsubscribe page
     </header>
     <section id="body">
       <?php if (isset($message)) { echo $message; } ?>

@@ -1,0 +1,20 @@
+#signup-email, 
+#signup-phone {
+  padding-bottom: 10px;
+}
+
+.message {
+  margin: 5px;
+  padding: 5px;
+  margin-bottom: 20px;
+}
+
+.message-error {
+  border: 3px solid #ff0000;
+  background: #ffb6c1;
+}
+
+.message-notice {
+  border: 3px solid #70df00;
+  background: #ccff99;
+}

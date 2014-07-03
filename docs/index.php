@@ -44,7 +44,8 @@ elseif (isset($_GET['email-submit'])) {
 <html>
   <head>
     <title>TRUISMS</title>
-
+    <!-- CSS Here -->
+    <link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" />
     <!-- Scripts Here --> 
     <script src="lib/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="js/truisms.js" type="text/javascript"></script>
@@ -52,17 +53,31 @@ elseif (isset($_GET['email-submit'])) {
   <body>
     <header>
       <h1><a href="index.php">Truisms</a></h1>
-      Jenny Holzer's Truisms delivered via SMS or Email.
     </header>
-    <section id="body">
+    <section id="about">
+      <h2>About</h2>
+      <p>
+        This site allows you to signup for daily text message or emails to
+        receive a (machine) selected quote from 
+        <a href="https://en.wikipedia.org/wiki/Jenny_Holzer">Jenny Holzer's</a> 
+        original truisms series. This site makes no claims of ownership over the
+        work, makes no financial gain from the work and seeks only to breathe 
+        life into through a new medium. I hope you enjoy this work as I have.
+      </p>
+      <p>
+        Dedicated to M.S.R., E.R.C and B.L. for their mutual appreciation of
+        Holzer's work, their friendship and support.
+      </p>
+    </section>
+    <section id="signup">
+      <h2>Signup</h2>
       <?php if (isset($message)) { echo $message; } ?>
       <div id="help-text">
         Please submit a phone number or email address to subscribe:
       </div>
-
       <div id="signup-type"></div>
       <form id="signup-phone">
-        Enter your phone number, including area code:<br />
+        <p>Enter your phone number, including area code:</p>
         <input name="phone" type="text" placeholder="Phone Number" required />
         <select name="provider" required>
           <option value="message.alltel.com">Alltel</option>
@@ -85,7 +100,7 @@ elseif (isset($_GET['email-submit'])) {
       </form>
       <noscript><h2>or</h2></noscript>
       <form id="signup-email">
-        Enter your email address:<br />
+        <p>Enter your email address:</p>
         <input name="email" type="text" placeholder="Email Address" required />
         <input name="email-submit" type="submit" value="Submit"/>
       </form>
