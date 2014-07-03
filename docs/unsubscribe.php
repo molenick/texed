@@ -1,6 +1,6 @@
 <?php
 
-require_once 'includes/lib.php';
+require_once '../includes/lib.php';
   
 $status;
 $submit_type;
