@@ -15,7 +15,6 @@ function get_contacts() {
   $contacts = array();
   $query = 'SELECT * FROM contact';
   $results = $mysqli->query($query);
-
   while ($row = $results->fetch_assoc()) {
     $contacts[] = $row['email'];
   }
@@ -23,7 +22,6 @@ function get_contacts() {
 
 function save_contact($contact = '', $submit_type = 'phone') {
   global $mysqli;
-
   if (filter_var($contact, FILTER_VALIDATE_EMAIL)) {
     $contact = $mysqli->real_escape_string($contact);
     $query = "INSERT INTO contact (email) values ('$contact')";
@@ -33,6 +31,59 @@ function save_contact($contact = '', $submit_type = 'phone') {
   else {
     header('Location: index.php?status=fail&submit-type=' . $submit_type);
   }
+}
+
+function get_prev_messages() {
+  global $mysqli;
+  $past_messages = '';
+  $query = 'SELECT mid FROM log';
+  $rs = $mysqli->query($query);
+
+  while ($row = $rs->fetch_assoc()) {
+    if (trim($past_messages) != '') {
+      $past_messages .= ',';
+    }
+    $past_messages .= $row['mid'];
+  }
+  return $past_messages;
+}
+
+function get_next_message($past_messages) {
+  global $mysqli;
+  // Get random message that is not in log.
+  $query = 'SELECT * FROM message';
+  if (trim($past_messages != '')) {
+    $query .= ' WHERE mid NOT IN (' . $past_messages . ')';
+  }
+  $rs = $mysqli->query($query);
+  $messages = array();
+
+  while ($row = $rs->fetch_assoc()) {
+    $messages[] = array('mid' => $row['mid'], 'message' => $row['message']);
+  } 
+  if (count($messages) > 0) {
+    $new_index = rand(0, count($messages) -1);
+    return $messages[$new_index];
+  }
+  else {
+    // We've reached the end of the list. Truncate log table and start over.
+    truncate_log();
+    $past_messages = '';
+    return get_next_message($past_messages);
+  }
+}
+
+function truncate_log() {
+  global $mysqli;
+  $query = 'truncate log';
+  $rs = $mysqli->query($query);  
+}
+
+function update_log($mid) {
+  global $mysqli;
+  $mid = $mysqli->real_escape_string($mid);
+  $query = "INSERT INTO log (mid, timestamp) VALUES ('" . $mid . "', " . time() . ")";
+  $mysqli->query($query);
 }
 
 function render_message($type, $message) {
