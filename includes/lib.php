@@ -20,7 +20,6 @@ function mail_contacts($message) {
     $contacts[] = $row['email'];
     $send_message = $message . ' - unsubscribe @ weirdworld.info/truisms/unsubscribe.php';
     mail($row['email'], 'Today\'s Truism', $send_message, $headers);
-    echo $row['email'] . "<br/>";
   }
 }
 
