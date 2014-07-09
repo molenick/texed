@@ -115,9 +115,9 @@ elseif (isset($_GET['email-submit'])) {
         </a>
       </section>
       <section id="unsubscribe">
-        <div id="unsubscribe-box">
-          <a href="unsubscribe.php">Unsubscribe</a>
-        </div>
+        <a href="unsubscribe.php">
+          <div id="unsubscribe-box">Unsubscribe</div>
+        </a>
     </div>
   </body>
 </html>
