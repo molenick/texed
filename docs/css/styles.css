@@ -1,3 +1,31 @@
+body {
+  background: #c898d0;
+}
+
+a {
+  color: #E600E6;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  line-height: 24px;
+}
+
+#wrapper {
+  background: #ffffff;
+  min-width: 320px;
+  max-width: 750px;
+  height: 100%;
+  margin: -15px auto;
+  padding: 10px;
+  min-height: 900px;
+}
+
 #signup-email, 
 #signup-phone {
   padding-bottom: 10px;
