@@ -65,6 +65,9 @@ elseif (isset($_GET['email-submit'])) {
           work, makes no financial gain from the work and seeks only to explore
           the content of the work in a new medium.
         </p>
+        <p>
+          Messages are sent out daily at 11 a.m. PST.
+        </p>
       </section>
       <section id="signup">
         <h2>Signup</h2>
