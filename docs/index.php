@@ -82,7 +82,7 @@ elseif (isset($_GET['email-submit'])) {
           <select name="provider" required>
             <option value="message.alltel.com">Alltel</option>
 	          <option value="txt.att.net">AT&T</option>
-            <option value="myboostmobile.com">Boost">Mobile</option>
+            <option value="myboostmobile.com">Boost Mobile</option>
             <option value="sms.mycricket.com">Cricket</option>
             <option value="mymetropcs.com">Metro PCS</option>
             <option value="messaging.nextel.com">Nextel</option>
