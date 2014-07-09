@@ -12,7 +12,7 @@ if ($mysqli->connect_errno) {
 
 function mail_contacts($message) {
   global $mysqli;
-  $headers = 'From: truisms@weirdworld.info' . "\r\n" .
+  $headers = 'From: truisms@weirdworld.info';
   $contacts = array();
   $query = 'SELECT * FROM contact';
   $results = $mysqli->query($query);
