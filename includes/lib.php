@@ -12,13 +12,14 @@ if ($mysqli->connect_errno) {
 
 function mail_contacts($message) {
   global $mysqli;
+  $headers = 'From: truisms@weirdworld.info' . "\r\n" .
   $contacts = array();
   $query = 'SELECT * FROM contact';
   $results = $mysqli->query($query);
   while ($row = $results->fetch_assoc()) {
     $contacts[] = $row['email'];
     $send_message = $message . ' - unsubscribe @ weirdworld.info/truisms/unsubscribe.php';
-    mail($row['email'], 'Today\'s Truism', $send_message);
+    mail($row['email'], 'Today\'s Truism', $send_message, $headers);
     echo $row['email'] . "<br/>";
   }
 }
