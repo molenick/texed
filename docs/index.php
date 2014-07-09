@@ -77,7 +77,7 @@ elseif (isset($_GET['email-submit'])) {
         </div>
         <div id="signup-type"></div>
         <form id="signup-phone">
-          <p>Enter your <strong>phone number</strong>, including area code:</p>
+          <p>Enter your <strong>phone number</strong> (including area code) as well as your <strong>service provider</strong>:</p>
           <input name="phone" type="text" placeholder="Phone Number" required />
           <select name="provider" required>
             <option value="message.alltel.com">Alltel</option>
