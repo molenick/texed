@@ -43,7 +43,7 @@ elseif (isset($_GET['email-submit'])) {
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TRUISMS</title>
+    <title>Truisms</title>
     <!-- CSS Here -->
     <link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" />
     <!-- Scripts Here --> 
@@ -102,13 +102,22 @@ elseif (isset($_GET['email-submit'])) {
           <input name="email-submit" type="submit" value="Submit"/>
         </form>
       </section>
-      <section id="unsubscribe">
-        <a href="unsubscribe.php">Unsubscribe</a>
       </section>
       <section id="privacy-policy">
         <h2>Privacy Policy</h2>
         <p>This site stores your supplied email and/or phone information to send you messages. This information is not shared with any third parties.</p>
       </section>
+      <section id="share">
+        <a href="https://twitter.com/share?text=Get a daily truism via sms or email&related=dolphinszs">
+          <div class="twitter-share">
+            <span>Share on</span><img class="twitter-icon" src="img/twitter-icon.png" />
+          </div>
+        </a>
+      </section>
+      <section id="unsubscribe">
+        <div id="unsubscribe-box">
+          <a href="unsubscribe.php">Unsubscribe</a>
+        </div>
     </div>
   </body>
 </html>
