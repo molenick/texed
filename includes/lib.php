@@ -19,7 +19,7 @@ function mail_contacts($message) {
   while ($row = $results->fetch_assoc()) {
     $contacts[] = $row['email'];
     $send_message = $message . ' - unsubscribe @ weirdworld.info/truisms/unsubscribe.php';
-    mail($row['email'], 'Today\'s Truism', $send_message, $headers);
+    mail($row['email'], '', $send_message, $headers);
   }
 }
 
