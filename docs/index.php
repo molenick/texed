@@ -9,7 +9,7 @@ $message = '';
 // Determine message
 if (isset($_GET['status'])) {
   if(trim($_GET['status']) == 'fail') {
-    $message = render_message(MESSAGE_ERROR, 'Please enter a valid email or phone number to signup. :)');
+    $message = render_message(MESSAGE_ERROR, 'Please enter a valid email or phone number to signup. Phone numbers should be numbers only, no letters or special characters. :)');
   }
   elseif (trim($_GET['status']) == 'success') {
     $message = render_message(MESSAGE_NOTICE, 'Good job, you are now signed up. :)');
@@ -18,14 +18,16 @@ if (isset($_GET['status'])) {
     $message = render_message(MESSAGE_NOTICE, 'You\'ve been removed from the truisms list. :)');
   }
 }
-  
+
 // Determine submit-type.  Only accept one.
 if (isset($_GET['phone-submit'])) {
   $submit_type = 'phone';
-  //save_contact($_GET['phone'], $submit_type);
   $phone = $_GET['phone'];
   echo 'LENGTH: ' . strlen(trim($phone));
   if (strlen(trim($phone)) < 10) {
+    header('Location: index.php?status=fail');
+  }
+  elseif (!is_numeric($phone)) {
     header('Location: index.php?status=fail');
   }
   else {

@@ -1,7 +1,7 @@
 <?php
 
 require_once '../includes/lib.php';
-  
+
 $status;
 $submit_type;
 $message = '';
@@ -12,7 +12,7 @@ if (isset($_GET['status'])) {
     $message = render_message(MESSAGE_ERROR, 'Please enter a valid email or phone number to unsubscribe. :)');
   }
 }
-  
+
 // Determine submit-type.  Only accept one.
 if (isset($_GET['phone-submit'])) {
   $phone = $_GET['phone'];
@@ -30,14 +30,14 @@ elseif (isset($_GET['email-submit'])) {
   remove_contact($_GET['email']);
 }
 ?>
-  
+
 <!DOCTYPE html>
 <html>
   <head>
     <title>Unsubscribe | Truisms</title>
     <!-- CSS Here -->
     <link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" />
-    <!-- Scripts Here --> 
+    <!-- Scripts Here -->
     <script src="lib/jquery/jquery-1.11.1.min.js" type="text/javascript"></script>
     <script src="js/truisms.js" type="text/javascript"></script>
   </head>
@@ -54,7 +54,7 @@ elseif (isset($_GET['email-submit'])) {
         </div>
         <div id="unsubscribe-type"></div>
         <form id="unsubscribe-phone">
-          <p>Enter your phone number, including area code:</p>
+          <p>Enter your phone number, including area code. Do not include special characters or letters:</p>
           <input name="phone" type="text" placeholder="Phone Number" required />
           <select name="provider" required>
             <option value="message.alltel.com">Alltel</option>
