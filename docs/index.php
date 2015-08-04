@@ -15,7 +15,7 @@ if (isset($_GET['status'])) {
     $message = render_message(MESSAGE_NOTICE, 'Good job, you are now signed up. :)');
   }
   elseif (trim($_GET['status']) == 'unsubscribe') {
-    $message = render_message(MESSAGE_NOTICE, 'You\'ve been removed from the truisms list. :)');
+    $message = render_message(MESSAGE_NOTICE, 'You\'ve been removed from the ' . $conf['app_name'] . ' list. :)');
   }
 }
 
@@ -59,17 +59,7 @@ elseif (isset($_GET['email-submit'])) {
       </header>
       <section id="about">
         <h2>About</h2>
-        <p>
-          This site allows you to signup for daily text message or emails to
-          receive a (machine) selected quote from 
-          <a href="https://en.wikipedia.org/wiki/Jenny_Holzer">Jenny Holzer's</a> 
-          original truisms series. This site makes no claims of ownership over the
-          work, makes no financial gain from the work and seeks only to explore
-          the content of the work in a new medium.
-        </p>
-        <p>
-          Messages are sent out daily at 11 a.m. PST.
-        </p>
+        <?php echo $conf['app_about']; ?>
       </section>
       <section id="signup">
         <h2>Signup</h2>
