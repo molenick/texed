@@ -1,5 +1,4 @@
 <?php
-require_once 'settings.php';
 require_once 'lib.php';
 
 $previous_messages = get_prev_messages();
