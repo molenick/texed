@@ -1,6 +1,12 @@
 <?php
-
-require_once 'settings.php';
+if (file_exists('settings.php')) {
+  require_once 'settings.php';
+}
+else {
+  echo "Settings.php not found.<br/><br/>";
+  echo "Please copy and configure settings.php from default.settings.php.";
+  die();
+}
 
 define('MESSAGE_ERROR', 'error');
 define('MESSAGE_NOTICE', 'notice');
