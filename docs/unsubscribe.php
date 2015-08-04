@@ -34,7 +34,7 @@ elseif (isset($_GET['email-submit'])) {
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Unsubscribe | Truisms</title>
+    <title>Unsubscribe | <?php echo $conf['app_name']; ?></title>
     <!-- CSS Here -->
     <link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" />
     <!-- Scripts Here -->
@@ -44,10 +44,10 @@ elseif (isset($_GET['email-submit'])) {
   <body>
     <div id="wrapper">
       <header>
-        <h1><a href="index.php">Truisms</a></h1>
+        <h1><a href="index.php"><?php echo $conf['app_name']; ?></a></h1>
       </header>
       <section id="unsubscribe">
-        <h2>Unsubscribe from Truisms</h2>
+        <h2>Unsubscribe from <?php echo $conf['app_name']; ?></h2>
         <?php if (isset($message)) { echo $message; } ?>
         <div id="help-text">
           Please enter your phone number or email address to unsubscribe:

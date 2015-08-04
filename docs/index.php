@@ -45,7 +45,7 @@ elseif (isset($_GET['email-submit'])) {
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Truisms</title>
+    <title><?php echo $conf['app_name']; ?></title>
     <!-- CSS Here -->
     <link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" />
     <!-- Scripts Here --> 
@@ -55,7 +55,7 @@ elseif (isset($_GET['email-submit'])) {
   <body>
     <div id="wrapper">
       <header>
-        <h1><a href="index.php">Truisms</a></h1>
+        <h1><a href="index.php"><?php echo $conf['app_name']; ?></a></h1>
       </header>
       <section id="about">
         <h2>About</h2>
