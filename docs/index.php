@@ -102,13 +102,6 @@ elseif (isset($_GET['email-submit'])) {
         <h2>Privacy Policy</h2>
         <p>This site stores your supplied email and/or phone information to send you messages. This information is not shared with any third parties.</p>
       </section>
-      <section id="share">
-        <a href="https://twitter.com/share?text=Get a daily truism via sms or email&related=dolphinszs">
-          <div class="twitter-share">
-            <span>Share on</span><img class="twitter-icon" src="img/twitter-icon.png" />
-          </div>
-        </a>
-      </section>
       <section id="unsubscribe">
         <a href="unsubscribe.php">
           <div id="unsubscribe-box">Unsubscribe</div>
