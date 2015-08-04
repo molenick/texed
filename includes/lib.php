@@ -1,5 +1,5 @@
 <?php
-if (file_exists('settings.php')) {
+if (file_exists(__DIR__ . '/settings.php')) {
   require_once 'settings.php';
 }
 else {
