@@ -84,7 +84,7 @@ elseif (isset($_GET['email-submit'])) {
       </section>
       <section id="privacy-policy">
         <h2>Privacy Policy</h2>
-        <p>This site stores your supplied email and/or phone information to send you messages. This information is not shared with any third parties.</p>
+        <?php echo $conf['app_policy']; ?>
       </section>
     </div>
   </body>
