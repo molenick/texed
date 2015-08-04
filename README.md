@@ -5,7 +5,7 @@ to people who have subscribed to the service.
 
 Installation
 ------------
-# Create a mysql database for the project.
-# Copy default.settings.php to settings.php and configure.
-# Create an Apache virtualhost (or equivalent) with the docs folder as the webroot.
-# Create a crontab entry to run cron.php as needed. See scripts/crontab for more information.
+1. Create a mysql database for the project.
+2. Copy default.settings.php to settings.php and configure.
+3. Create an Apache virtualhost (or equivalent) with the docs folder as the webroot.
+4. Create a crontab entry to run cron.php as needed. See scripts/crontab for more information.
