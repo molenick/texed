@@ -39,7 +39,7 @@ elseif (isset($_GET['email-submit'])) {
     <link rel="stylesheet" href="css/styles.css" type="text/css" media="screen" />
     <!-- Scripts Here -->
     <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="js/truisms.js" type="text/javascript"></script>
+    <script src="js/texed.js" type="text/javascript"></script>
   </head>
   <body>
     <div id="wrapper">
