@@ -11,7 +11,7 @@ else {
 define('MESSAGE_ERROR', 'error');
 define('MESSAGE_NOTICE', 'notice');
 
-$mysqli = new mysqli($conf['db_host'], $conf['db_user'], $conf['db_pass'], $conf['db']);
+$mysqli = new mysqli($conf['db_host'], $conf['db_user'], $conf['db_pass'], $conf['db'], $conf['db_port']);
 if ($mysqli->connect_errno) {
   echo "Can't connect to the database. :*(";
 }

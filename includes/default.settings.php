@@ -9,5 +9,6 @@ $conf = array();
   $conf['db_host'] = 'localhost';
   $conf['db_user'] = '';
   $conf['db_pass'] = '';
+  $conf['db_port'] = '3306';
   // @todo Add port.
 ?>
