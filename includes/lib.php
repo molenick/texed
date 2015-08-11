@@ -18,12 +18,12 @@ if ($mysqli->connect_errno) {
 
 function mail_contacts($message) {
   global $mysqli;
+  global $conf;
   $headers = 'From: ' . $conf['app_from'];
   $contacts = array();
   $query = 'SELECT * FROM contact';
   $results = $mysqli->query($query);
   while ($row = $results->fetch_assoc()) {
-    $contacts[] = $row['email'];
     $send_message = $message . ' - ' . $conf['app_url'] . '/unsubscribe.php';
     mail($row['email'], '', $send_message, $headers);
   }
@@ -78,7 +78,7 @@ function get_next_message($past_messages) {
 
   while ($row = $rs->fetch_assoc()) {
     $messages[] = array('mid' => $row['mid'], 'message' => $row['message']);
-  } 
+  }
   if (count($messages) > 0) {
     $new_index = rand(0, count($messages) -1);
     return $messages[$new_index];
@@ -94,7 +94,7 @@ function get_next_message($past_messages) {
 function truncate_log() {
   global $mysqli;
   $query = 'truncate log';
-  $rs = $mysqli->query($query);  
+  $rs = $mysqli->query($query);
 }
 
 function update_log($mid) {
